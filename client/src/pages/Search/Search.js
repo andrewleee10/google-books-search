@@ -47,7 +47,7 @@ const Search = () => {
   const handleSaveBook = book => {
     Book.addBook(book)
       .then(() => {
-        const books = bookState.books.filter(googleBooks => googleBooks.id !== book.bookId)
+        const books = bookState.books.filter(googleBooks => googleBooks.id !== book.id)
         setBookState({ ...bookState, books })
       })
   }

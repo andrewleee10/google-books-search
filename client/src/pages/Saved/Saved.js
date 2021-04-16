@@ -53,8 +53,8 @@ const Saved = () => {
               />
               <CardMedia
                 className={classes.media}
-                image={book.volumeInfo.imageLinks.thumbnail}
-                title={book.volumeInfo.title}
+                image={book.image}
+                title={book.title}
               />
               <CardActions>
                 <Button
