@@ -33,8 +33,9 @@ const Search = () => {
     setBookState({ ...bookState, [target.name]: target.value })
   }
 
-  const handleSearchGif = event => {
+  const handleSearchBook = event => {
     event.preventDefault()
+
     Book.getBook(bookState.search)
       .then(({ data: books }) => {
         console.log(books)
@@ -43,7 +44,7 @@ const Search = () => {
       .catch(err => console.error(err))
   }
 
-  const handleSaveGif = book => {
+  const handleSaveBook = book => {
     Book.addBook(book)
       .then(() => {
         const books = bookState.books.filter(googleBooks => googleBooks.id !== book.bookId)
@@ -56,47 +57,47 @@ const Search = () => {
       <Form
         search={bookState.search}
         handleInputChange={handleInputChange}
-        handleSearchGif={handleSearchGif}
-      />
+        handleSearchBook={handleSearchBook}
+        />
       {
         bookState.books.length
-          ? bookState.books.map(book => (
-            <Card key={book.id} className={classes.root}>
+        ? bookState.books.map(book => (
+          <Card key={book.id} className={classes.root}>
               <CardHeader
                 title={book.title}
-              />
+                />
               <CardMedia
                 className={classes.media}
                 image={book.volumeInfo.imageLinks.smallThumbnail}
                 title={book.volumeInfo.title}
-              />
+                />
               <CardActions>
                 <Button
                   size='small'
                   color='primary'
-                  onClick={() => handleSaveGif({
+                  onClick={() => handleSaveBook({
                     title: book.volumeInfo.title,
                     authors: book.volumeInfo.authors[0],
                     description: book.volumeInfo.description,
                     image: book.volumeInfo.imageLinks.thumbnail,
-                    link: book.selfLink
+                    link: book.volumeInfo.canonicalVolumeLink
                   })}
-                >
+                  >
                   Save
                 </Button>
                 <Button
                   size='small'
                   color='primary'
-                  href={book.selfLink}
-                >
+                  href={book.volumeInfo.canonicalVolumeLink}
+                  >
                   View
                 </Button>
               </CardActions>
             </Card>
           ))
           : null
-      }
-    </>
+        }
+   </>
   )
 }
 

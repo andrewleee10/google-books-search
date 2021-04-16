@@ -27,7 +27,7 @@ const Saved = () => {
     books: []
   })
 
-  const handleDeleteGif = id => {
+  const handleDeleteBook = id => {
     Book.deleteBook(id)
       .then(() => {
         const books = bookState.books.filter(book => book._id !== id)
@@ -53,14 +53,14 @@ const Saved = () => {
               />
               <CardMedia
                 className={classes.media}
-                image={book.volumeInfo.imageLinks.smallThumbnail}
+                image={book.volumeInfo.imageLinks.thumbnail}
                 title={book.volumeInfo.title}
               />
               <CardActions>
                 <Button
                   size='small'
                   color='secondary'
-                  onClick={() => handleDeleteGif(book._id)}
+                  onClick={() => handleDeleteBook(book._id)}
                 >
                   Delete
                 </Button>

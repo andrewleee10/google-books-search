@@ -4,10 +4,10 @@ import Button from '@material-ui/core/Button'
 const Form = ({
   search,
   handleInputChange,
-  handleSearchGif
+  handleSearchBook
 }) => {
   return (
-    <form onSubmit={handleSearchGif}>
+    <form onSubmit={handleSearchBook}>
       <TextField
         label='Search Book'
         name='search'
@@ -17,7 +17,7 @@ const Form = ({
       <Button
         variant='outlined'
         color='primary'
-        onClick={handleSearchGif}
+        onClick={handleSearchBook}
       >
         Search
       </Button>

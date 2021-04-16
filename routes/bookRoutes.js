@@ -3,13 +3,13 @@ const { Book } = require('../models')
 
 router.get('/books', (req, res) => {
   Book.find({})
-    .then(gifs => res.json(gifs))
+    .then(books => res.json(books))
     .catch(err => console.log(err))
 })
 
 router.post('/books', (req, res) => {
   Book.create(req.body)
-    .then(gif => res.json(gif))
+    .then(book => res.json(book))
     .catch(err => console.log(err))
 })
 
